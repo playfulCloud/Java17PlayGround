@@ -3,6 +3,7 @@ package org.example;
 import org.example.exceptions.ExceptionsPlayground;
 import org.example.exceptions.MyExc;
 import org.example.functional.FunctionalMe;
+import org.example.stringsAndIOs.ShowMeSomeIOs;
 
 import java.io.FileNotFoundException;
 
@@ -14,10 +15,10 @@ public class Main {
 //        exceptionsPlayground.showMeSomething();
 //        exceptionsPlayground.doSomethingWithResources();
 //        exceptionsPlayground.frytMeBabyOneMoreTime();
-
-        FunctionalMe functionalMe = new FunctionalMe();
-
-        functionalMe.example();
+//        FunctionalMe functionalMe = new FunctionalMe();
+//        functionalMe.example();
+        ShowMeSomeIOs iOs = new ShowMeSomeIOs();
+        iOs.more();
     }
 
 }

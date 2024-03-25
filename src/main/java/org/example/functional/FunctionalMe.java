@@ -13,9 +13,7 @@ public class FunctionalMe {
         Comparator<Person> byNameLength = (Person x, Person y) -> {
             return Integer.compare(y.getName().length(), x.getName().length());
         };
-
         people.sort( byNameLength);
-//        System.out.println(people.stream().filter(person -> person.getAge() > 30).findAny().orElseThrow(() -> new RuntimeException("not found")).toString());
         people.forEach(System.out::println);
     }
 

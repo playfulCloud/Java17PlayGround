@@ -1,5 +1,7 @@
 package org.example.stringsAndIOs;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.util.List;
 
 public class ShowMeSomeIOs {
@@ -12,7 +14,9 @@ public class ShowMeSomeIOs {
         // to remember indexOf can take substring
         // if substring is not present it returns the negative value
         System.out.println("  *** indexMe *****".indexOf("indexMe"));
-        regularExpr("wrong");
+//        regularExpr("wrong");
+//        imNotReplaceable();
+        readSomeBytes();
     }
 
     public void regularExpr(String toSeekFrom){
@@ -44,5 +48,31 @@ public class ShowMeSomeIOs {
         var separateMeWithAsterix = List.of("foo", "bar","john","doe");
         // join is awesome but it join -> seperate with something only between words
         System.out.println(String.join(" *** ",separateMeWithAsterix));
+    }
+
+
+    public void imNotReplaceable(){
+        // we can replace substring
+        //we can also replace first ocurrence of some substring
+        System.out.println("fooobarfoooobarfooobar".replace("foo","john"));
+        String imBadWithFunctionalMe = "playfulCloud";
+        var filtredChars = imBadWithFunctionalMe.chars()
+                .filter(x -> x == 97)
+                .map(x -> x*x).boxed().toList();
+        System.out.println(filtredChars);
+        System.out.println("DoeDoWhatDoesDoes".repeat(3));
+    }
+
+    public void readSomeBytes(){
+        byte[] bytes = new byte[]{83,93,73};
+        try (ByteArrayInputStream inputStream = new ByteArrayInputStream(bytes)){
+           int data = inputStream.read();
+           while(data != -1){
+               System.out.println((char) data);
+               data = inputStream.read();
+           }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

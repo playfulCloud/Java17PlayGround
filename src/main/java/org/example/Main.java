@@ -16,7 +16,7 @@ public class Main {
 //        exceptionsPlayground.doSomethingWithResources();
 //        exceptionsPlayground.frytMeBabyOneMoreTime();
 //        FunctionalMe functionalMe = new FunctionalMe();
-//        functionalMe.example();
+//        functionglMe.example();
         ShowMeSomeIOs iOs = new ShowMeSomeIOs();
         iOs.more();
     }

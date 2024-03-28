@@ -1,8 +1,6 @@
 package org.example;
 
-import org.example.exceptions.ExceptionsPlayground;
 import org.example.exceptions.MyExc;
-import org.example.functional.FunctionalMe;
 import org.example.stringsAndIOs.ShowMeSomeIOs;
 
 import java.io.FileNotFoundException;
@@ -19,6 +17,7 @@ public class Main {
 //        functionglMe.example();
         ShowMeSomeIOs iOs = new ShowMeSomeIOs();
         iOs.more();
+
     }
 
 }

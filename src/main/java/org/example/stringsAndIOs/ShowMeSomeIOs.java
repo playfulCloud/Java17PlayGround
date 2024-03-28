@@ -1,8 +1,12 @@
 package org.example.stringsAndIOs;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
+
+import org.example.Main;
+
+import java.io.*;
+import java.net.URL;
 import java.util.List;
+import java.util.Objects;
 
 public class ShowMeSomeIOs {
 
@@ -16,7 +20,9 @@ public class ShowMeSomeIOs {
         System.out.println("  *** indexMe *****".indexOf("indexMe"));
 //        regularExpr("wrong");
 //        imNotReplaceable();
-        readSomeBytes();
+//        readSomeBytes();
+        files();
+        seriesOfSerializables();
     }
 
     public void regularExpr(String toSeekFrom){
@@ -75,4 +81,55 @@ public class ShowMeSomeIOs {
             throw new RuntimeException(e);
         }
     }
+
+    public void files(){
+        String uri = Objects.requireNonNull(Main.class.getClassLoader().getResource("resources")).getFile();
+        try(FileInputStream inputStream = new FileInputStream(uri)){
+           while(inputStream.read() != -1) {
+               System.out.println((char) inputStream.read());
+           }
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void seriesOfSerializables(){
+       try(ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("someClass.bin"));
+           ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("someClass.bin"))
+       ) {
+         Dummy dummy = new Dummy();
+         objectOutputStream.writeObject(dummy);
+
+         Object readDummy = (Dummy) objectInputStream.readObject();
+
+           System.out.println(((Dummy) readDummy).lvl);
+
+       } catch (FileNotFoundException e) {
+           throw new RuntimeException(e);
+       } catch (IOException e) {
+           throw new RuntimeException(e);
+       } catch (ClassNotFoundException e) {
+           throw new RuntimeException(e);
+       }
+
+    }
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
